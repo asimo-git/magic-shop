@@ -16,7 +16,7 @@ export default function ProductCard({ productInfo }: { productInfo: Product }) {
       <div className="p-4 flex flex-col flex-grow items-center text-center">
         <h2 className="text-lg font-semibold">{productInfo.name}</h2>
         <p className="flex-grow mt-2 line-clamp-3">{productInfo.description}</p>
-        <CardButtonBar id={productInfo.id} price={productInfo.price} />
+        <CardButtonBar product={productInfo} />
       </div>
     </div>
   );
