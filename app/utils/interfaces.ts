@@ -11,5 +11,5 @@ export interface CartItem extends Product {
 }
 
 export interface CartState {
-  items: CartItem[];
+  items: Record<number, CartItem>;
 }

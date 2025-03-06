@@ -1,3 +1,5 @@
+import Navigation from "./Navigation";
+
 export default function Header() {
   return (
     <header className="shadow-md w-full flex justify-between gap-2 items-center p-4">
@@ -6,7 +8,7 @@ export default function Header() {
           Magic gizmo shop
         </h1>
       </div>
-      <button className="btn">Cart</button>
+      <Navigation />
     </header>
   );
 }

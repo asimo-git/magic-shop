@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/cartSlice";
+import { RootState } from "../redux/store";
 import { CartItem, Product } from "../utils/interfaces";
 
 export default function CardButtonBar({ product }: { product: Product }) {
   const [showPrice, setShowPrice] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
   const dispatch = useDispatch();
+  const itemInCart = useSelector(
+    (state: RootState) => state.cart.items[product.id]
+  );
 
   const handleAddToCart = () => {
     const newItem: CartItem = {
@@ -17,7 +20,6 @@ export default function CardButtonBar({ product }: { product: Product }) {
     };
 
     dispatch(addItem(newItem));
-    setIsInCart(true);
   };
 
   return (
@@ -40,9 +42,9 @@ export default function CardButtonBar({ product }: { product: Product }) {
       <button
         className="btn btn-card"
         onClick={handleAddToCart}
-        disabled={isInCart}
+        disabled={Boolean(itemInCart)}
       >
-        {isInCart ? "В корзине ✓" : "В корзину"}
+        {itemInCart ? "В корзине ✓" : "В корзину"}
       </button>
     </>
   );
