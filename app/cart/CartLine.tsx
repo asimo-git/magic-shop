@@ -15,7 +15,7 @@ export default function CartLine({ product }: { product: CartItem }) {
   return (
     <div
       key={product.id}
-      className="max-w-4xl flex flex-wrap flex-col sm:flex-row gap-4 items-center justify-between p-4 rounded-lg shadow-lg "
+      className="w-full max-w-4xl flex flex-wrap flex-col sm:flex-row gap-4 items-center justify-between p-4 rounded-lg shadow-lg "
     >
       <div className="flex items-center gap-4">
         <Image
