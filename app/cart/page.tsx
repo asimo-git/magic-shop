@@ -26,15 +26,15 @@ export default function Cart() {
           <div className="text-xl font-semibold">Корзина пуста</div>
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
-          <div className="flex justify-between p-4">
+        <div className="flex flex-col items-center gap-4">
+          <div className=" w-full max-w-3xl flex justify-between items-center gap-3 p-4">
             <h2 className="text-3xl font-bold text-center">Ваша корзина</h2>
-            <button className="btn" onClick={() => dispatch(clearCart())}>
+            <button className="btn h-fit" onClick={() => dispatch(clearCart())}>
               Очистить
             </button>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
+          <div className="w-full max-w-3xl flex flex-col items-center gap-3">
             {itemsInCart.map((item) => (
               <CartLine key={item.id} product={item} />
             ))}
