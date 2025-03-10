@@ -3,7 +3,7 @@ import { products } from "./data";
 
 export default function Home() {
   return (
-    <div className="flex justify-evenly gap-3 flex-wrap">
+    <div className="w-full flex justify-evenly gap-5 flex-wrap">
       {products.map((product) => (
         <ProductCard key={product.id} productInfo={product} />
       ))}

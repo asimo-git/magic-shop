@@ -4,18 +4,20 @@ import CardButtonBar from "./CardButtonBar";
 
 export default function ProductCard({ productInfo }: { productInfo: Product }) {
   return (
-    <div className="w-72 p-2 flex flex-col items-center rounded-xl shadow-lg bg-accent transition-transform transform hover:scale-105 duration-300 ease-in-out">
-      <div>
+    <div className="min-h-80 max-w-lg basis-96 grow p-2 flex flex-col sm:flex-row items-center rounded-xl  bg-accent transition-transform transform hover:scale-105 duration-300 ease-in-out">
+      <div className="flex-shrink-0">
         <Image
           src={productInfo.img}
           alt={productInfo.name}
-          width={200}
-          height={200}
+          width={180}
+          height={180}
         />
       </div>
-      <div className="p-4 flex flex-col flex-grow items-center text-center">
-        <h2 className="text-lg font-semibold">{productInfo.name}</h2>
-        <p className="flex-grow mt-2 line-clamp-3">{productInfo.description}</p>
+      <div className="h-full p-2 flex flex-col flex-grow items-center justify-between text-center">
+        <div>
+          <h2 className="text-2xl font-semibold">{productInfo.name}</h2>
+          <p className="flex-grow mt-2">{productInfo.description}</p>
+        </div>
         <CardButtonBar product={productInfo} />
       </div>
     </div>

@@ -23,9 +23,9 @@ export default function CardButtonBar({ product }: { product: Product }) {
   };
 
   return (
-    <>
+    <div>
       <button
-        className="btn btn-card my-2"
+        className="btn btn-card my-2 w-40"
         onClick={() => setShowPrice((prev) => !prev)}
       >
         {showPrice ? "Скрыть цену" : "Показать цену"}
@@ -35,17 +35,15 @@ export default function CardButtonBar({ product }: { product: Product }) {
           showPrice ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="mt-1  px-4 py-2 rounded-md shadow-sm">
-          Цена: {product.price}
-        </div>
+        <div className="pb-2 rounded-md shadow-sm">Цена: {product.price}</div>
       </div>
       <button
-        className="btn btn-card"
+        className="btn btn-card w-40"
         onClick={handleAddToCart}
         disabled={Boolean(itemInCart)}
       >
         {itemInCart ? "В корзине ✓" : "В корзину"}
       </button>
-    </>
+    </div>
   );
 }

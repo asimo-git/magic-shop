@@ -35,7 +35,7 @@ export default function RootLayout({
         <ReduxProvider>
           <div className="flex flex-col min-h-screen font-[family-name:var(--font-main)] bg-462525">
             <Header />
-            <main className="flex-1 container mx-auto p-4">{children}</main>
+            <main className="w-full flex-1 p-4">{children}</main>
             <Footer />
           </div>
         </ReduxProvider>
