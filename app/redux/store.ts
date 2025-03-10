@@ -1,12 +1,13 @@
+"use client";
+
 import { configureStore } from "@reduxjs/toolkit";
-import { CartState } from "../utils/interfaces";
 import cartReducer from "./cartSlice";
 
-const saveCartState = (state: CartState) => {
-  localStorage.setItem("cartState", JSON.stringify(state));
-};
-
 const loadCartState = () => {
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
   const savedState = localStorage.getItem("cartState");
   return savedState ? JSON.parse(savedState) : undefined;
 };
@@ -20,9 +21,11 @@ export const store = configureStore({
   preloadedState: loadedCartState ? { cart: loadedCartState } : undefined,
 });
 
-store.subscribe(() => {
-  saveCartState(store.getState().cart);
-});
+if (typeof window !== "undefined") {
+  store.subscribe(() => {
+    localStorage.setItem("cartState", JSON.stringify(store.getState().cart));
+  });
+}
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
