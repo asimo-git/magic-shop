@@ -22,9 +22,9 @@ body {
 }
 
 .btn-card {
-  @apply bg-red-900;
+  @apply bg-cardBtn;
 }
 
-.btn-card:disabled {
-  @apply bg-orange-500;
+.btn-in-cart {
+  @apply bg-activeBtn;
 }

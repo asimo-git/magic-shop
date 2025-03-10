@@ -13,6 +13,8 @@ export default {
         foreground: "var(--foreground)",
         accent: "#882f2f",
         accentHover: "#963b3b",
+        cardBtn: "#7f1d1d",
+        activeBtn: "#f97316",
       },
     },
   },

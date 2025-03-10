@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../redux/cartSlice";
+import { addItem, removeItem } from "../redux/cartSlice";
 import { RootState } from "../redux/store";
 import { CartItem, Product } from "../utils/interfaces";
 
@@ -13,13 +13,17 @@ export default function CardButtonBar({ product }: { product: Product }) {
     (state: RootState) => state.cart.items[product.id]
   );
 
-  const handleAddToCart = () => {
-    const newItem: CartItem = {
-      ...product,
-      quantity: 1,
-    };
+  const toggleCartItem = () => {
+    if (itemInCart) {
+      dispatch(removeItem(product.id));
+    } else {
+      const newItem: CartItem = {
+        ...product,
+        quantity: 1,
+      };
 
-    dispatch(addItem(newItem));
+      dispatch(addItem(newItem));
+    }
   };
 
   return (
@@ -38,9 +42,8 @@ export default function CardButtonBar({ product }: { product: Product }) {
         <div className="pb-2 rounded-md shadow-sm">Цена: {product.price}</div>
       </div>
       <button
-        className="btn btn-card w-40"
-        onClick={handleAddToCart}
-        disabled={Boolean(itemInCart)}
+        className={`btn w-40 ${itemInCart ? "btn-in-cart" : "btn-card"}`}
+        onClick={toggleCartItem}
       >
         {itemInCart ? "В корзине ✓" : "В корзину"}
       </button>
