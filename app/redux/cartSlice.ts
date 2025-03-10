@@ -27,6 +27,9 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = {};
     },
+    hydrate: (state, action: PayloadAction<CartState>) => {
+      return action.payload;
+    },
   },
 });
 
