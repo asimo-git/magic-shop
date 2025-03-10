@@ -3,6 +3,7 @@ import { Henny_Penny, LXGW_WenKai_Mono_TC } from "next/font/google";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
+import ReduxProvider from "./redux/ReduxProvider";
 
 const mainFont = LXGW_WenKai_Mono_TC({
   variable: "--font-main",
@@ -31,11 +32,13 @@ export default function RootLayout({
       <body
         className={`${mainFont.variable} ${titleFont.variable} antialiased`}
       >
-        <div className="flex flex-col min-h-screen font-[family-name:var(--font-main)] bg-462525">
-          <Header />
-          <main className="flex-1 container mx-auto p-4">{children}</main>
-          <Footer />
-        </div>
+        <ReduxProvider>
+          <div className="flex flex-col min-h-screen font-[family-name:var(--font-main)] bg-462525">
+            <Header />
+            <main className="w-full flex-1 p-4">{children}</main>
+            <Footer />
+          </div>
+        </ReduxProvider>
       </body>
     </html>
   );
